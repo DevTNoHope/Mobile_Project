@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 
-void main() {
-  runApp(const ScanShareApp());
-}
+void main() => runApp(const SmartScanApp());
 
-class ScanShareApp extends StatelessWidget {
-  const ScanShareApp({super.key});
-
+class SmartScanApp extends StatelessWidget {
+  const SmartScanApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Scan & Share QR',
+      title: 'Smart Scan',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green),
       home: const HomePage(),
     );
   }
