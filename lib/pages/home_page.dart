@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_project/pages/scan_history_page.dart';
 import 'generate_qr_page.dart';
 import 'scan_page.dart';
 
@@ -90,8 +91,16 @@ class HomePage extends StatelessWidget {
                       icon: Icons.history_rounded,
                       title: 'Lịch sử',
                       subtitle: 'Các mã đã quét',
-                      onTap: () => _todo(context, 'Lịch sử'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ScanHistoryPage(),
+                          ),
+                        );
+                      },
                     ),
+
                     _FeatureCard(
                       icon: Icons.info_outline_rounded,
                       title: 'Hướng dẫn',
