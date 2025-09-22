@@ -3,13 +3,11 @@ import 'scan_history.dart';
 class ScanHistoryService {
   static final List<ScanHistory> _history = [];
 
-  static void addCode(String code) {
-    _history.insert(0, ScanHistory(code: code, time: DateTime.now()));
+  static void addHistory(ScanHistory item) {
+    _history.insert(0, item);
   }
 
-  static List<ScanHistory> getHistory() {
-    return _history;
-  }
+  static List<ScanHistory> getHistory() => _history;
 
   static void clearHistory() {
     _history.clear();

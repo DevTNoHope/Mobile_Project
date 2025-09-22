@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'scan_history_service.dart';
 import 'scan_history.dart';
+import 'product_result_page.dart'; // thêm import để mở lại sản phẩm
 
 class ScanHistoryPage extends StatelessWidget {
   const ScanHistoryPage({super.key});
@@ -45,6 +46,19 @@ class ScanHistoryPage extends StatelessWidget {
                   "${item.time.minute.toString().padLeft(2, '0')} "
                   "- ${item.time.day}/${item.time.month}/${item.time.year}",
             ),
+            onTap: () {
+              // 🔹 Khi bấm vào item -> mở lại ProductResultPage
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ProductResultPage(
+                    barcode: item.code,
+                    product: item.product,
+                    rawContent: item.rawContent,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),

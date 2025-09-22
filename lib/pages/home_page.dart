@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_project/pages/scan_history_page.dart';
+import 'package:qr_project/pages/settings_page.dart';
 import 'generate_qr_page.dart';
 import 'scan_page.dart';
 
@@ -108,11 +109,19 @@ class HomePage extends StatelessWidget {
                       onTap: () => _todo(context, 'Hướng dẫn'),
                     ),
                     _FeatureCard(
-                      icon: Icons.settings_rounded,
+                      icon: Icons.settings,
                       title: 'Cài đặt',
                       subtitle: 'Giao diện & quyền',
-                      onTap: () => _todo(context, 'Cài đặt'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SettingsPage()),
+                        );
+                      },
                     ),
+
+
+
                   ]),
                 );
               },

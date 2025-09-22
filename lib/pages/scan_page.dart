@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:qr_project/pages/scan_history.dart';
 import 'package:qr_project/pages/scan_history_service.dart';
 import '../services/barcode_image_service.dart';
 import '../services/product_api.dart';
@@ -48,16 +49,25 @@ class _ScanPageState extends State<ScanPage> {
 
     if (isNumericBarcode) {
       final prod = await ProductApi.fetchByBarcode(code);
-      // 🔹 Lưu vào lịch sử
-      ScanHistoryService.addCode(code);
+
+      // 🔹 Lưu vào lịch sử (có sản phẩm)
+      ScanHistoryService.addHistory(
+        ScanHistory(code: code, time: DateTime.now(), product: prod),
+      );
+
       if (!mounted) return;
       await Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => ProductResultPage(barcode: code, product: prod)),
+        MaterialPageRoute(
+          builder: (_) => ProductResultPage(barcode: code, product: prod),
+        ),
       );
     } else {
-      // 🔹 Lưu raw content vào lịch sử
-      ScanHistoryService.addCode(code);
+      // 🔹 Lưu raw content
+      ScanHistoryService.addHistory(
+        ScanHistory(code: code, time: DateTime.now(), rawContent: code),
+      );
+
       await Navigator.push(
         context,
         MaterialPageRoute(
@@ -65,6 +75,7 @@ class _ScanPageState extends State<ScanPage> {
         ),
       );
     }
+
 
     _handling = false; // cho phép detect tiếp sau khi quay lại
   }
@@ -106,6 +117,7 @@ class _ScanPageState extends State<ScanPage> {
       final isNumericBarcode = RegExp(r'^\d{8,14}$').hasMatch(code);
       if (isNumericBarcode) {
         final prod = await ProductApi.fetchByBarcode(code);
+
         if (!mounted) return;
         await Navigator.push(
           context,
