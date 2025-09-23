@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_project/pages/scan_history_page.dart';
 import 'package:qr_project/pages/settings_page.dart';
 import 'generate_qr_page.dart';
+import 'guide_page.dart';
 import 'scan_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -103,11 +104,17 @@ class HomePage extends StatelessWidget {
                     ),
 
                     _FeatureCard(
-                      icon: Icons.info_outline_rounded,
+                      icon: Icons.help_outline,
                       title: 'Hướng dẫn',
                       subtitle: 'Cách sử dụng app',
-                      onTap: () => _todo(context, 'Hướng dẫn'),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const GuidePage()),
+                        );
+                      },
                     ),
+
                     _FeatureCard(
                       icon: Icons.settings,
                       title: 'Cài đặt',
