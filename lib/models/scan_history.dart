@@ -1,4 +1,4 @@
-import '../models/product.dart';
+import 'product.dart';
 import '../services/product_api.dart';
 
 class ScanHistory {
