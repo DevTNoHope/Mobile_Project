@@ -1,4 +1,4 @@
-import 'scan_history.dart';
+import '../models/scan_history.dart';
 
 class ScanHistoryService {
   static final List<ScanHistory> _history = [];

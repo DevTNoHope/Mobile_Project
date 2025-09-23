@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'scan_history_service.dart';
-import 'scan_history.dart';
+import '../models/scan_history.dart';
+import '../services/scan_history_service.dart';
 import 'product_result_page.dart'; // thêm import để mở lại sản phẩm
 
 class ScanHistoryPage extends StatelessWidget {
