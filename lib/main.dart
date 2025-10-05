@@ -13,5 +13,8 @@ class SmartScanApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.green),
       home: const HomePage(),
     );
+
+
   }
+
 }
