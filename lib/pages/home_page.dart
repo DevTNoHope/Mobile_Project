@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:qr_project/pages/redeem_voucher_page.dart';
 import 'package:qr_project/pages/scan_history_page.dart';
 import 'package:qr_project/pages/settings_page.dart';
 import 'generate_qr_page.dart';
 import 'guide_page.dart';
 import 'scan_page.dart';
-
+import 'contribute_product_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -126,8 +127,30 @@ class HomePage extends StatelessWidget {
                         );
                       },
                     ),
-
-
+                    _FeatureCard(
+                      icon: Icons.volunteer_activism_rounded,
+                      title: 'Đóng góp',
+                      subtitle: 'Thêm sản phẩm mới',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ContributeProductPage(),
+                          ),
+                        );
+                      },
+                    ),
+                    _FeatureCard(
+                      icon: Icons.card_giftcard_rounded,
+                      title: 'Đổi điểm',
+                      subtitle: 'Nhận voucher ưu đãi',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const RedeemVoucherPage()),
+                        );
+                      },
+                    ),
 
                   ]),
                 );
@@ -294,4 +317,6 @@ class _FeatureCard extends StatelessWidget {
       ),
     );
   }
+
 }
+
